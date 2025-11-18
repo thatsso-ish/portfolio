@@ -1,3 +1,150 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@keyframes pulse-subtle {
+  0% {
+    opacity: 0.3;
+    transform: scale(0.9) translateY(0px);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1) translateY(-2px);
+  }
+  100% {
+    opacity: 0.3;
+    transform: scale(0.9) translateY(0px);
+  }
+}
+
+@keyframes meteor {
+  0% {
+    transform: translateX(0) translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-200vw) translateY(100vh);
+    opacity: 0;
+  }
+}
+
+@layer utilities {
+  .animate-pulse-subtle {
+    animation: pulse-subtle 3s ease-in-out infinite;
+  }
+
+  .animate-meteor {
+    animation: meteor 6s ease-in linear infinite;
+  }
+
+  .star {
+    background-color: #ffffff;
+    border-radius: 50%;
+    box-shadow: 0 0 2px rgba(255, 255, 255, 0.8);
+  }
+
+  .meteor {
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0));
+    border-radius: 50%;
+    filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.6));
+  }
+
+  /* Daytime background elements */
+  .day-cloud {
+    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.95), rgba(255,255,255,0.7), rgba(255,255,255,0));
+    border-radius: 999px;
+    filter: blur(2px);
+  }
+
+  .day-bird-flock {
+    position: absolute;
+    width: 90px;
+    height: 40px;
+  }
+
+  .day-bird {
+    position: absolute;
+    width: 18px;
+    height: 8px;
+  }
+
+  .day-bird::before,
+  .day-bird::after {
+    content: "";
+    position: absolute;
+    width: 18px;
+    height: 10px;
+    border-radius: 999px;
+    border-top: 2px solid rgba(40, 40, 60, 0.65);
+    opacity: 0.9;
+  }
+
+  .day-bird::before {
+    left: 0;
+    transform: rotate(-20deg);
+  }
+
+  .day-bird::after {
+    right: 0;
+    transform: rotate(20deg);
+  }
+}
+
+@keyframes cloud-drift {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(140vw);
+  }
+}
+
+@keyframes birds-flight-left {
+  0% {
+    transform: translateX(0) translateY(0) scale(1);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(-60vw) translateY(-4vh) scale(1.05);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-120vw) translateY(3vh) scale(0.9);
+    opacity: 0;
+  }
+}
+
+@keyframes birds-flight-right {
+  0% {
+    transform: translateX(0) translateY(0) scale(1) rotateY(180deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(60vw) translateY(-3vh) scale(1.05) rotateY(180deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(120vw) translateY(2vh) scale(0.9) rotateY(180deg);
+    opacity: 0;
+  }
+}
+
+@layer utilities {
+  .animate-cloud-drift {
+    animation: cloud-drift linear infinite;
+  }
+
+  .animate-birds-left {
+    animation: birds-flight-left ease-in-out infinite;
+  }
+
+  .animate-birds-right {
+    animation: birds-flight-right ease-in-out infinite;
+  }
+}

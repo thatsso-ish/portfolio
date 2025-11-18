@@ -1,0 +1,22 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {"continent": "Africa"},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[...]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {"continent": "Asia"},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[...]]]
+      }
+    }
+    // Add other continents here
+  ]
+}

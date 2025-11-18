@@ -7,9 +7,7 @@ import { useState, useEffect } from 'react';
 import './index.css';
 
 function App() {
-  const [dark, setDark] = useState(() =>
-    window.matchMedia('(prefers-color-scheme: dark)').matches
-  );
+  const [dark, setDark] = useState(() => false);
   const [currentPage, setCurrentPage] = useState('globe');
 
   useEffect(() => {
@@ -43,21 +41,21 @@ function App() {
         return <GlobeSection onSectionSelect={scrollToSection} isDark={dark} />;
       case 'projects':
         return (
-          <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-12">
-            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-6 sm:mb-8 text-brand-blue">Projects</h1>
+          <div className="w-full min-h-screen flex flex-col items-center px-2 sm:px-6 lg:px-12 py-4 sm:py-8 lg:py-16">
+            <h1 className="text-xl sm:text-3xl lg:text-4xl font-bold mb-4 sm:mb-8 text-brand-blue text-center">Projects</h1>
             <ProjectCards />
           </div>
         );
       case 'hackathons':
         return (
-          <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-12">
-            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-6 sm:mb-8 text-brand-blue">Seasonal Tech Competitions</h1>
+          <div className="w-full min-h-screen flex flex-col items-center px-2 sm:px-6 lg:px-12 py-4 sm:py-8 lg:py-16">
+            <h1 className="text-xl sm:text-3xl lg:text-4xl font-bold mb-4 sm:mb-8 text-brand-blue text-center">Seasonal Tech Competitions</h1>
             <HackathonCards />
           </div>
         );
       case 'contact':
         return (
-          <div className="w-full px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-12">
+          <div className="w-full min-h-screen flex flex-col items-center px-2 sm:px-6 lg:px-12 py-4 sm:py-8 lg:py-16">
             <ContactSection />
           </div>
         );
@@ -67,14 +65,14 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen w-full flex bg-brand-light dark:bg-brand-dark text-brand-gray-900 dark:text-gray-100 transition-bg">
+    <div className="min-h-screen min-h-[320px] w-full flex bg-brand-light dark:bg-brand-dark text-brand-gray-900 dark:text-gray-100 transition-bg">
       <Navbar 
         currentPage={currentPage} 
         onNavigate={handleNavigation} 
         dark={dark} 
         setDark={setDark} 
       />
-      <main className="flex-1 ml-12 sm:ml-16">
+      <main className="flex-1 ml-0 sm:ml-16 w-full min-h-[320px]">
         {renderPage()}
       </main>
     </div>
